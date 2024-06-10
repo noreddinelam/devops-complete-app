@@ -1,6 +1,6 @@
 name: CI devops 2024
 on:
-  #to begin you want to launch this job in main and develop
+  #to begin to launch this job in main and develop
   push:
     branches:
       - main
