@@ -31,13 +31,13 @@ jobs:
     # run only when code is compiling and tests are passing
     runs-on: ubuntu-22.04
     # steps to perform in job
-    secrets: inherit
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.5.0
 
       - name: Login to DockerHub
         run: docker login -u ${{ env.DOCKER_HUB_USERNAME }} -p ${{ env.DOCKER_HUB_PASSWORD }}
+        shell: bash
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
