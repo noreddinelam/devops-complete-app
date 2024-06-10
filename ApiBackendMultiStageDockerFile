@@ -1,0 +1,9 @@
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /home/api-backend
+COPY ./api-backend/Main.java .
+RUN javac Main.java
+
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /home/api-backend
+COPY --from=0 /home/api-backend/Main.class .
+ENTRYPOINT ["java", "Main"]

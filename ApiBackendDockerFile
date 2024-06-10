@@ -1,0 +1,9 @@
+FROM openjdk:18-jdk-alpine
+
+WORKDIR /home/api-backend
+
+COPY ./api-backend/Main.java .
+
+RUN javac Main.java
+
+ENTRYPOINT ["java", "Main"]
