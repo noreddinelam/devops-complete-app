@@ -39,8 +39,8 @@ jobs:
       - name: Login to DockerHub
         run: docker login -u ${{ env.DOCKER_HUB_USERNAME }} -p ${{ env.DOCKER_HUB_PASSWORD }}
         env:
-          DOCKER_HUB_USERNAME: ${{ secrets.GITHUB_TOKEN }}
-          DOCKER_HUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build image and push backend
         uses: docker/build-push-action@v3
