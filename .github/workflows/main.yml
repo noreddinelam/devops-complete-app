@@ -48,7 +48,7 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./simple-api
           # Note: tags has to be all lower-case
-          tags: ${{ env.DOCKER_HUB_USERNAME }}/tp-devops-simple-api:latest
+          tags: noreddinelam/tp-devops-simple-api:latest
           push: ${{ github.ref == 'refs/heads/main' }}
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -57,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags: ${{ env.DOCKER_HUB_USERNAME }}/tp-devops-database:latest
+          tags: noreddinelam/tp-devops-database:latest
           push: ${{ github.ref == 'refs/heads/main' }}
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -66,7 +66,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags: ${{ env.DOCKER_HUB_USERNAME }}/tp-devops-http-server:latest
+          tags: noreddinelam/tp-devops-http-server:latest
           push: ${{ github.ref == 'refs/heads/main' }}
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
