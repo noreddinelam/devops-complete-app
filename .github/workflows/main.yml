@@ -48,20 +48,29 @@ jobs:
           # relative path to the place where source code with Dockerfile is located
           context: ./simple-api
           # Note: tags has to be all lower-case
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-simple-api:latest
+          tags: "$DOCKER_HUB_USERNAME"/tp-devops-simple-api:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-database:latest
+          tags: "$DOCKER_HUB_USERNAME"/tp-devops-database:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags: ${{secrets.DOCKER_HUB_USERNAME}}/tp-devops-http-server:latest
+          tags: "$DOCKER_HUB_USERNAME"/tp-devops-http-server:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
