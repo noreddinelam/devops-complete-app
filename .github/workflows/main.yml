@@ -28,7 +28,7 @@ jobs:
   # define job to build and publish docker image
   build-and-push-docker-image:
     needs: test-backend
-    # run only when code is compiling and tests are passing
+    # run only when code is compiling and tests are running
     runs-on: ubuntu-22.04
     # steps to perform in job
     steps:
