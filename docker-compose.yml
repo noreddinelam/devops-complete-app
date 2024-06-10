@@ -4,7 +4,6 @@ services:
     backend:
         build:
           context: ./simpleapi/
-          dockerfile: ./Dockerfile
         environment:
         - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/db
         container_name: backendapi
@@ -17,8 +16,7 @@ services:
 
     database:
         build:
-          context: .
-          dockerfile: ./DatabaseDockerFile
+          context: ./database/
         ports:
         - "5432:5432"
         networks:
@@ -27,7 +25,6 @@ services:
     httpd:
         build:
           context: ./http-server/
-          dockerfile: ./Dockerfile
         ports:
         - "7000:80"
         networks:
