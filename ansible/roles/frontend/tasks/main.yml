@@ -1,0 +1,13 @@
+---
+# tasks file for roles/database
+- name: Run frontend
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  docker_container:
+    name: frontend
+    image: noreddinelam/frontend:latest
+    networks:
+      - name: app-network
+    ports:
+      - "9000:80"
+
