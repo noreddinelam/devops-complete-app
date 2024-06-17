@@ -1,0 +1,8 @@
+- hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+    - command: 'docker -v'
+      register: result
+    - debug:
+        msg: '{{ result.stdout }}'
