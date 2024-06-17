@@ -1,0 +1,15 @@
+---
+# tasks file for roles/app
+- name: Run APP
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  docker_container:
+    name: backendapi
+    image: noreddinelam/tp-devops-simple-api:latest
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/db
+    ports:
+      - "8080:8080"
+    networks:
+      - name: app-network
+
