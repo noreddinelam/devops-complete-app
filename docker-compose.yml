@@ -1,37 +1,38 @@
+# This file is used to build the images and run the containers for the backend, database and http-server
 version: '3.7'
 
-services:
-    backend:
-        build:
+services: # Define the services
+    backend: # Define the backend service
+        build: # Build the image
           context: ./simpleapi/
-        environment:
+        environment: # Define the environment variables
         - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/db
         container_name: backendapi
-        ports:
+        ports: # Define the ports
         - "8080:8080"
-        networks:
+        networks: # Define the networks
         - app-network
-        depends_on:
+        depends_on: # Define the dependencies of the service
         - database
 
-    database:
-        build:
+    database: # Define the database service
+        build: # Build the image
           context: ./database/
-        ports:
+        ports: # Define the ports
         - "5432:5432"
-        networks:
+        networks: # Define the networks
         - app-network
 
-    httpd:
-        build:
+    httpd: # Define the httpd service
+        build: # Build the image
           context: ./http-server/
-        ports:
+        ports: # Define the ports
         - "7000:80"
-        networks:
+        networks: # Define the networks
         - app-network
-        depends_on:
+        depends_on: # Define the dependencies of the service
         - backend
 
-networks:
-    app-network:
-      driver: bridge
+networks: # Define the networks
+    app-network: # Define the app-network
+      driver: bridge # Define the driver

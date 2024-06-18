@@ -1,3 +1,4 @@
+# Description: Playbook to install docker on all hosts (just for testing purposes)
 - hosts: all
   gather_facts: false
   become: true

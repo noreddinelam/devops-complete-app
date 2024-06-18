@@ -1,5 +1,6 @@
 ---
 # tasks file for roles/network
+# Description: This file contains the tasks to create a Docker network on the target servers.
 - name: Create a Docker network
   docker_network:
     name: app-network

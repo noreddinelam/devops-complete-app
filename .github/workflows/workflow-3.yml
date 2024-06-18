@@ -1,6 +1,5 @@
-name: CD - Ansible devops 2024
-on:
-  #to begin to launch this job in main and develop
+name: CD - Ansible devops 2024 # This is the third workflow that will be executed and it aims to deploy the application with Ansible
+on: # Launch this job when the second workflow is completed and the code is pushed to main
   workflow_run:
     workflows: [ "CD devops 2024" ]
     types:
@@ -8,22 +7,21 @@ on:
     branches:
       - main
 jobs:
-  # define job to build and publish docker image
   push-app-with-ansible:
-    # run only when code is compiling and tests are running
     runs-on: ubuntu-22.04
-    # steps to perform in job
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # Action to checkout your repository
+        uses: actions/checkout@v2
 
       - name: Install Ansible
         run: |
           python -m pip install --upgrade pip
           pip install ansible
 
-      - name: Run Ansible playbook
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: False  # Disable host key checking if needed
+      - name: Run Ansible playbook # Run the Ansible playbook to deploy the application
+        env: # Define the environment variables to be used in the playbook
+          ANSIBLE_HOST_KEY_CHECKING: False
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           ansible-playbook -i ansible/inventories/setup.yml ansible/deploy-app.yml

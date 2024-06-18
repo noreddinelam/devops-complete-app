@@ -1,5 +1,6 @@
 ---
 # tasks file for roles/proxy
+# Description: This file contains the tasks to deploy the ReverseProxy on the target servers.
 - name: Run ReverseProxy
   vars:
     ansible_python_interpreter: /usr/bin/python3

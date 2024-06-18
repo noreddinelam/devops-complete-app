@@ -1,27 +1,23 @@
-name: CI devops 2024
-on:
-  #to begin to launch this job in main and develop
+name: CI devops 2024 # This is the first workflow that will be executed and it aims to build and test the application
+on: # Launch this job when code is pushed to main or develop
   push:
     branches:
       - main
       - develop
   pull_request:
 
-jobs:
-  test-backend:
-    runs-on: ubuntu-22.04
-    steps:
-      #checkout your github code using actions/checkout@v2.5.0
-      - uses: actions/checkout@v2.5.0
+jobs: # Define the jobs to be executed
+  test-backend: # Define the job to test the backend
+    runs-on: ubuntu-22.04 # Run the job on an Ubuntu machine
+    steps: # Define the steps to be executed in the job
+      - uses: actions/checkout@v2.5.0 # Action to checkout your repository
 
-      #do the same with another action (actions/setup-java@v3) that enable to setup jdk 17
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
+        uses: actions/setup-java@v3 # Action to set up Java
+        with: # Define some input parameters
           java-version: 17
           distribution: corretto
 
-      #finally build your app with the latest command
-      - name: Build and test with Maven
+      - name: Build and test with Maven # Define the step to build and test the application
         run: mvn -B verify sonar:sonar -Dsonar.projectKey=noreddinelam_devops-complete-app -Dsonar.organization=noreddinelam -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simpleapi/pom.xml
 
