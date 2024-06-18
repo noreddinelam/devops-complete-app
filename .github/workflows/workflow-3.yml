@@ -18,6 +18,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install ansible
 
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H noreddinelamamra.takima.cloud >> ~/.ssh/known_hosts
+
       - name: Run Ansible playbook # Run the Ansible playbook to deploy the application
         env: # Define the environment variables to be used in the playbook
           ANSIBLE_HOST_KEY_CHECKING: False
