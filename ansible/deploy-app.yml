@@ -1,9 +1,11 @@
+# Description: This playbook is used to deploy the application on the target servers.
 - hosts: all
-  become: yes
-  gather_facts: no
-  roles:
+  become: yes # Do privilege escalation
+  gather_facts: no # Disable the gathering of facts
+  roles: # Define the roles to be executed
     - docker
     - network
     - database
     - app
     - proxy
+    - frontend

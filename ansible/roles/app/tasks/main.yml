@@ -1,15 +1,16 @@
 ---
 # tasks file for roles/app
+# Description: This file contains the tasks to deploy the application on the target servers.
 - name: Run APP
   vars:
     ansible_python_interpreter: /usr/bin/python3
-  docker_container:
+  docker_container: # Run the docker container
     name: backendapi
     image: noreddinelam/tp-devops-simple-api:latest
-    env:
+    env: # Define the environment variables
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/db
-    ports:
+    ports: # Define the ports
       - "8080:8080"
-    networks:
+    networks: # Define the networks
       - name: app-network
 
