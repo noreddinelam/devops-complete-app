@@ -40,6 +40,6 @@ jobs:
       - name: Build image and push frontend # Build the image and push it to DockerHub
         uses: docker/build-push-action@v3
         with:
-          context: ./devops-frontend
+          context: ./frontend
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-frontend:latest
           push: ${{ github.ref == 'refs/heads/main' }}
