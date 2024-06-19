@@ -33,5 +33,6 @@ jobs:
           ANSIBLE_HOST_KEY_CHECKING: False
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        shell: bash
         run: |
           ansible-playbook -i ansible/inventories/setup.yml ansible/deploy-app.yml

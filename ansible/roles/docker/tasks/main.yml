@@ -4,7 +4,7 @@
   yum:
     name: device-mapper-persistent-data
     state: latest
-    use_backend: dnf4  # or dnf5 based on your dnf version
+#    use_backend: dnf4  # or dnf5 based on your dnf version
 
 - name: Install lvm2
   yum:
