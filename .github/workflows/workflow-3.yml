@@ -35,4 +35,4 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         shell: bash
         run: |
-          ansible-playbook -i ansible/inventories/setup.yml ansible/deploy-app.yml
+          ansible-playbook -vvv -i ansible/inventories/setup.yml ansible/deploy-app.yml
