@@ -28,9 +28,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H noreddinelamamra.takima.cloud >> ~/.ssh/known_hosts
 
-      - name: verify known_hosts
-        run: cat ~/.ssh/known_hosts
-
       - name: Run Ansible playbook # Run the Ansible playbook to deploy the application
         env: # Define the environment variables to be used in the playbook inside the job
           ANSIBLE_HOST_KEY_CHECKING: False
