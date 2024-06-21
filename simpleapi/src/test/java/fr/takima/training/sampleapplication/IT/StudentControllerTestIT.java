@@ -23,7 +23,7 @@ class StudentControllerTestIT {
     @Test
     @Sql({"/InsertData.sql"})
     void testGetStudentById() throws Exception {
-        mockMvc.perform(get("/students/6"))
+        mockMvc.perform(get("/api/students/6"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id", equalTo(6)))
                 .andExpect(jsonPath("firstname", equalTo("Jeanne")))
@@ -35,7 +35,7 @@ class StudentControllerTestIT {
     @Test
     @Sql({"/InsertData.sql"})
     void testGetNonExistingStudentById() throws Exception {
-        mockMvc.perform(get("/students/666"))
+        mockMvc.perform(get("/api/students/666"))
                 .andExpect(status().isNotFound());
     }
 
@@ -52,7 +52,7 @@ class StudentControllerTestIT {
                     }
                 }
                 """;
-        mockMvc.perform(post("/students/")
+        mockMvc.perform(post("/api/students/")
                         .content(body)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
@@ -71,7 +71,7 @@ class StudentControllerTestIT {
                     }
                 }
                 """;
-        mockMvc.perform(post("/students/")
+        mockMvc.perform(post("/api/students/")
                         .content(body)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
@@ -86,7 +86,7 @@ class StudentControllerTestIT {
                     }
                 }
                 """;
-        mockMvc.perform(post("/students/")
+        mockMvc.perform(post("/api/students/")
                         .content(body)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
@@ -95,7 +95,7 @@ class StudentControllerTestIT {
     @Test
     @Sql({"/InsertData.sql"})
     void testUpdateStudent() throws Exception {
-        mockMvc.perform(get("/students/11"))
+        mockMvc.perform(get("/api/students/11"))
                 .andExpect(jsonPath("id", equalTo(11)))
                 .andExpect(jsonPath("firstname", equalTo("Sophie")))
                 .andExpect(jsonPath("lastname", equalTo("Schutt")))
@@ -112,7 +112,7 @@ class StudentControllerTestIT {
                     }
                 }
                 """;
-        mockMvc.perform(put("/students/11")
+        mockMvc.perform(put("/api/students/11")
                         .content(body)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -126,11 +126,11 @@ class StudentControllerTestIT {
     @Test
     @Sql({"/InsertData.sql"})
     void testDeleteStudent() throws Exception {
-        mockMvc.perform(get("/students/1"))
+        mockMvc.perform(get("/api/students/1"))
                 .andExpect(jsonPath("id", equalTo(1)));
-        mockMvc.perform(delete("/students/1"))
+        mockMvc.perform(delete("/api/students/1"))
                 .andExpect(status().isOk());
-        mockMvc.perform(get("/students/1"))
+        mockMvc.perform(get("/api/students/1"))
                 .andExpect(status().isNotFound());
     }
 }
