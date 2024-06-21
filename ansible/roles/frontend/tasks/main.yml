@@ -7,8 +7,6 @@
   docker_container:
     name: frontend
     image: noreddinelam/tp-devops-frontend:latest
-    env: # Define the environment variables
-      VUE_APP_API_URL: backendapi:8080
     networks:
       - name: app-network
     ports:
