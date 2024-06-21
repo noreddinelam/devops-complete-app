@@ -6,7 +6,7 @@
     ansible_python_interpreter: /usr/bin/python3
   docker_container:
     name: frontend
-    image: noreddinelam/tp-devops-frontend:latest
+    image: noreddinelam/tp-devops-front:latest
     networks:
       - name: app-network
     ports:

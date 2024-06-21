@@ -34,12 +34,12 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-http-server:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-httpd-server:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push frontend # Build the image and push it to DockerHub
         uses: docker/build-push-action@v3
         with:
           context: ./frontend
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-frontend:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tp-devops-front:latest
           push: ${{ github.ref == 'refs/heads/main' }}
