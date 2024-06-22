@@ -24,6 +24,8 @@ This project contains 3 services which are :
    Springboot & Java. It is responsible for handling the API requests and interacting with the database.
 2. **Database Service**: This service is responsible for handling the database operations. It is built using PostgreSQL relational database.
 3. **Reverse Proxy Service**: This service is responsible for routing the requests to the appropriate service. It is built using Apache Server.
+4. **Frontend Service**: This service is responsible for handling the frontend logic of the application. It is built using
+   Vue & Javascript. It is responsible for handling the user interface and interacting with the backend service.
 
 ### Questions answers for the task
 
@@ -120,3 +122,7 @@ exposed and ensure that the application is secure.
 
 Every file in the project is documented with comments to explain the purpose of the file and the code. The code is also
 written in a clean and readable format to make it easy to understand and maintain.
+
+### Accessing the application
+
+To access the application on cloud, navigate to ```http://noreddinelamamra.takima.cloud``` in your browser (If the EC2 instance is still running).
